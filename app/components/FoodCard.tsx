@@ -11,10 +11,10 @@ export const FoodCard: React.FC<FoodCardProps> = ({ food }) => {
   const { addToCart } = useCart();
 
   return (
-    <div className="border border-gray-800 rounded-2xl p-3 bg-[#222222] text-white flex flex-col justify-between h-full hover:border-gray-700 transition-all shadow-sm">
+    <div className="bg-white rounded-3xl p-4 flex flex-col justify-between h-full shadow-md border border-gray-100 transition-transform duration-200 hover:scale-[1.02]">
       <div>
-        {/* Зургийн хэсэг */}
-        <div className="w-full h-32 bg-gray-950 rounded-xl overflow-hidden mb-2 flex items-center justify-center relative">
+        {/* Хоолны зураг (Бөөрөнхий булантай) */}
+        <div className="w-full h-40 bg-gray-50 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center">
           {food.image ? (
             <img
               src={food.image}
@@ -22,32 +22,32 @@ export const FoodCard: React.FC<FoodCardProps> = ({ food }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <span className="text-gray-600 text-xs">📸 Зураггүй</span>
+            <span className="text-gray-400 text-xs">📸 Зураггүй</span>
           )}
         </div>
 
-        {/* Нэр */}
-        <div className="flex justify-between items-start mb-1">
-          <h4 className="font-bold text-sm text-gray-100 truncate w-full">
+        {/* Нэр болон Үнэ (Нэг мөрөнд) */}
+        <div className="flex justify-between items-baseline mb-2 gap-2">
+          <h4 className="font-extrabold text-base text-[#E53935] tracking-tight truncate flex-1">
             {food.name}
           </h4>
+          <span className="font-extrabold text-gray-900 text-sm whitespace-nowrap">
+            ${food.price.toFixed(2)}
+          </span>
         </div>
 
-        {/* Орц */}
-        <p className="text-gray-400 text-[11px] line-clamp-2 mb-3 h-8">
+        {/* Тайлбар бичвэр */}
+        <p className="text-gray-500 text-xs font-medium leading-relaxed line-clamp-2 mb-4">
           {food.ingredients}
         </p>
       </div>
 
-      {/* Үнэ болон Нэмэх товч */}
-      <div className="flex justify-between items-center mt-2 pt-2 border-t border-gray-800">
-        <span className="font-extrabold text-orange-500 text-sm">
-          {food.price.toLocaleString()}₮
-        </span>
+      {/* Нэмэх товчлуур (Баруун доод буланд) */}
+      <div className="flex justify-end mt-auto">
         <button
           onClick={() => addToCart(food)}
-          className="bg-orange-500 text-white text-xs px-2.5 py-1.5 rounded-lg font-bold hover:bg-orange-600 transition-colors">
-          + Нэмэх
+          className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 font-bold hover:bg-[#E53935] hover:text-white hover:border-[#E53935] transition-all shadow-sm text-sm">
+          +
         </button>
       </div>
     </div>
